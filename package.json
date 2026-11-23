@@ -1,0 +1,103 @@
+{
+  "name": "dsh-electric-sheep",
+  "version": "0.1.0",
+  "description": "Daily reflective sleep Session for DeepSeek Harness: reviews recent work, keeps notes, and reloads them into working Sessions",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./tools": {
+      "types": "./lib/types/tools.d.ts",
+      "default": "./lib/types/tools.js"
+    },
+    "./isolation": {
+      "types": "./lib/types/isolation.d.ts",
+      "default": "./lib/types/isolation.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/types/**/*.js",
+    "lib/types/**/*.d.ts",
+    "lib/types/**/*.d.ts.map",
+    "lib/**/*.js.map",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "dsh": ">=0.2.3-alpha.2"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=0.2.3-alpha.2 <0.3.0",
+    "@deepseek-ai/dsh-atomic-write": ">=0.2.3-alpha.2 <0.3.0",
+    "@deepseek-ai/dsh-commands": ">=0.2.3-alpha.2 <0.3.0",
+    "@deepseek-ai/dsh-error": ">=0.2.3-alpha.2 <0.3.0",
+    "@deepseek-ai/dsh-llm": ">=0.2.3-alpha.2 <0.3.0",
+    "@deepseek-ai/dsh-session": ">=0.2.3-alpha.2 <0.3.0",
+    "@deepseek-ai/dsh-storage-domain": ">=0.2.3-alpha.2 <0.3.0",
+    "@deepseek-ai/dsh-timeout": ">=0.2.3-alpha.2 <0.3.0",
+    "@deepseek-ai/dsh-tools": ">=0.2.3-alpha.2 <0.3.0",
+    "@deepseek-ai/dsh-util-time": ">=0.2.3-alpha.2 <0.3.0",
+    "@deepseek-ai/dsh-util-values": ">=0.2.3-alpha.2 <0.3.0",
+    "@deepseek-ai/schemastery": ">=0.2.3-alpha.2 <0.3.0"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-atomic-write": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-commands": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-error": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-llm": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-session": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-storage-domain": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-timeout": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-tools": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-util-time": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-util-values": {
+      "optional": true
+    },
+    "@deepseek-ai/schemastery": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "zod": "4.6.6"
+  }
+}

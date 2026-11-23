@@ -1,0 +1,54 @@
+# Sleep: one daily reflective Session that keeps its own notes, plus the preset
+# that Session runs under. The `/sleep` command answers beside the timer, and
+# working Sessions receive the saved notes through the host row.
+- insert:
+    - id: sleep
+      name: 'dsh-electric-sheep'
+      config:
+        dir: !!js dshHomePath('sleep')
+        enabled: true
+        time: '03:00'
+        timeZone: !!js Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'
+        minSessions: 1
+        injectMaxBytes: 16384
+        maxSourceBytes: 1048576
+        inspectMaxBytes: 4194304
+        inspectMaxEntries: 1024
+        presetId: 'sleep'
+        reasoningEffort: 'max'
+
+    # The sleep preset mounts no project tools and no agent instructions: the
+    # reflection stays isolated from the workspace. The isolation row masks what
+    # the preset inherits from the Host, so the same mask applies to a Session a
+    # user starts under this preset; the runtime mounts
+    # `dsh-electric-sheep/tools` in the sleep Session's own scope, where a
+    # restriction does not reach its own registrations.
+    - id: preset-sleep
+      name: '@deepseek-ai/dsh-agent-preset'
+      config:
+        id: sleep
+        name: Sleep
+        order: 5
+        description: Daily reflective Session that curates its own notes
+        plugins:
+          - id: persona
+            name: '@deepseek-ai/dsh-persona'
+            config:
+              prefix: |-
+                You are running a reflective sleep session: one private journal pass between work days.
+
+                No user is waiting for an answer here, and this session changes no project files. Your own notes directory is the only place you write.
+                Review what the day's sessions did, then keep notes for the session that starts tomorrow: what will matter then, what went wrong, and what to try next.
+                Organize the notes as you find most useful. They are yours.
+              complete: true
+              includeRuntimeContext: false
+          - id: isolation
+            name: 'dsh-electric-sheep/isolation'
+          - id: compaction
+            name: cordis:group
+            group: true
+            isolate:
+              compaction: true
+            config:
+              - id: compaction-basic
+                name: '@deepseek-ai/dsh-compaction-basic'

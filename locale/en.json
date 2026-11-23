@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Sleep",
+    "description": "Runs a daily Session that reviews recent work and keeps its own notes, which later Sessions read."
+  }
+}
